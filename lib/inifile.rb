@@ -98,7 +98,7 @@ class IniFile
     File.open(filename, mode) do |f|
       @ini.each do |section,hash|
         f.puts "[#{section}]"
-        hash.each {|param,val| f.puts "#{param} #{@param} #{escape_value} \"#{val}\""}
+        hash.each {|param,val| f.puts "#{param} #{@param}  \"#{escape_value val}\""}
         f.puts
       end
     end
