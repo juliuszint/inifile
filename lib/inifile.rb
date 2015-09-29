@@ -135,7 +135,7 @@ class IniFile
     s = []
     @ini.each do |section,hash|
       s << "[#{section}]"
-      hash.each {|param,val| s << "#{param} #{@param} #{escape_value val}"}
+      hash.each {|param,val| s << "#{param} #{@param} \"#{escape_value val}\""}
       s << ""
     end
     s.join("\n")
@@ -596,8 +596,8 @@ class IniFile
       when %r/\Afalse\z/i; false
       when %r/\A\s*\z/i;   nil
       else
-        Integer(value) rescue \
-        Float(value)   rescue \
+        #Integer(value) rescue \
+        #Float(value)   rescue \
         unescape_value(value)
       end
     end
